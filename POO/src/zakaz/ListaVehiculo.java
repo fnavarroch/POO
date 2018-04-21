@@ -18,10 +18,11 @@ public class ListaVehiculo
 	
 	/* M�todos */
 	
-	public boolean agregarVehiculo(	marcaVehiculo,
-                                    	tipoVehiculo,
-                                    	modeloVehiculo,
-                                    	patenteVehiculo){
+	public boolean agregarVehiculo(	String marcaVehiculo,
+                                    	String tipoVehiculo,
+                                    	String modeloVehiculo,
+                                    	String patenteVehiculo)
+        {
 		
 		if(existeVehiculo(patenteVehiculo)==false){
 			Vehiculo nuevo= new Vehiculo(marcaVehiculo, tipoVehiculo, modeloVehiculo, patenteVehiculo);

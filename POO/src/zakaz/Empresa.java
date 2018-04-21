@@ -22,7 +22,7 @@ public class Empresa
     private String nombre;
     private String direccion;
     private String rutEmpresa;
-    private String telefonoEmpresa;
+    private Integer telefonoEmpresa;
     private Persona encargado;
 
     ListaProducto productos;
@@ -35,7 +35,7 @@ public class Empresa
     public Empresa(String nombre,
                    String direccion,
                    String rutEmpresa,
-                   String telefonoEmpresa) {
+                   Integer telefonoEmpresa) {
 	    
 	this.nombre= nombre;
         this.direccion= direccion;
@@ -74,7 +74,7 @@ public class Empresa
     public String getRutEmpresa(){
         return rutEmpresa;
     }
-    public String getTelefonoEmpresa(){
+    public Integer getTelefonoEmpresa(){
         return telefonoEmpresa;
     }
     public boolean agregarEncargado(String nombre,
@@ -82,6 +82,15 @@ public class Empresa
                                     String rut){
         if (encargado==null){
             encargado = new Persona(nombre,fechNac,rut);
+            return true;
+        }
+        return false;
+    }
+    public boolean agregarEncargado(String nombre,
+                                    String fechNac,
+                                    String rut){
+        if (encargado==null){
+            encargado = new Persona(nombre,java.sql.Date.valueOf(fechNac),rut);
             return true;
         }
         return false;
@@ -109,7 +118,7 @@ public class Empresa
                                    String tipoVehiculo,
                                    String modelo,
                                    String patente){      
-        if (productos.agregarVehiculo(marca,tipoVehiculo,modelo, patente)==true){//agregarVehiculo de la clase ListaVehiculos debe agregar el vehiculo solo si la patente no existe.
+        if (vehiculos.agregarVehiculo(marca,tipoVehiculo,modelo, patente)==true){//agregarVehiculo de la clase ListaVehiculos debe agregar el vehiculo solo si la patente no existe.
             return true;
         }
         return false;
@@ -146,10 +155,8 @@ public class Empresa
         ResultSet rs = conexion.consulta(query);
         while (rs.next())
         {
-            Vehiculo v = new Vehiculo(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
-            //System.out.println("Se agrega "+rs.getString(2)+ " " +Integer.parseInt(rs.getString(1))+ " " +Integer.parseInt(rs.getString(3)));
-            if (!vehiculos.existeVehiculo(v.getPatente()))
-                vehiculos.agregarVehiculo(v);
+            if (!vehiculos.existeVehiculo(rs.getString(4)))
+                vehiculos.agregarVehiculo(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
                 
         }
         conexion.cerrarConexion();        
@@ -318,7 +325,7 @@ public class Empresa
             for (int i=0;i<locales.cantidadLocales();i++)
             {
                 query = " INSERT INTO Locales (id,nombre,direccion,ciudad,rutEncargado,nombreEncargado) VALUES("
-                        +locales.buscarLocal(i).getId()+",'"+locales.buscarLocal(i).getNombre()+"','"+locales.buscarLocal(i).getCiudad()+"','"+locales.buscarLocal(i).getDireccion()+"','"+locales.buscarLocal(i).getEncargado().getRut()+"','"+locales.buscarLocal(i).getEncargado().getNombre()+"');";
+                        +locales.retornaLocal(i).getId()+",'"+locales.retornaLocal(i).getNombre()+"','"+locales.retornaLocal(i).getCiudad()+"','"+locales.retornaLocal(i).getDireccion()+"','"+locales.retornaLocal(i).getEncargado().getRut()+"','"+locales.retornaLocal(i).getEncargado().getNombre()+"');";
                 //System.out.println(query);
                 filas+=conexion.updating(query);
             }

@@ -10,7 +10,7 @@ public class ListaEmpleados {
 	 * @param empleados
 	 */
 	public ListaEmpleados() {
-		this.empleados = new ArrayList<Persona>();
+		this.empleados = new ArrayList<>();
 	}
 	
 	

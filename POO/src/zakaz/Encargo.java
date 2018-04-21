@@ -45,7 +45,6 @@ public class Encargo
 		this.destino = destino;
 	}
 	
-	
 	public int calcularPrecioEncargo()
 	{
 		int precio=0;
