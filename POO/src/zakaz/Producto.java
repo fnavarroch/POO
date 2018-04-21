@@ -1,9 +1,9 @@
 package zakaz;
 
 public class Producto {
-	int id;
-	String nombre;
-	int valor;
+	private int id;
+	private String nombre;
+	private int valor;
 	/**
 	 * @param id
 	 * @param nombre
