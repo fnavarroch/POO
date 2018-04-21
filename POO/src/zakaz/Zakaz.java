@@ -37,7 +37,9 @@ public class Zakaz
             System.out.println("3- agregar vehiculo\n");
             System.out.println("4- agregar planilla\n");
             
-            System.out.println("2- cambiar encargado\n");
+            System.out.println("6- cambiar encargado\n");
+            
+            System.out.println("99- cerrar programa\n");
             
             System.out.println("ingrese una opcion\n");
             int op= entrada.nextInt();
@@ -93,6 +95,9 @@ public class Zakaz
                 else{
                         System.out.println("error al ingresar vehiculo\n");
                 }
+             if (op==99){
+                 terminar=true;
+             }
         }
         //Menu?
         empresa.empleados.mostrarEmpleados();
