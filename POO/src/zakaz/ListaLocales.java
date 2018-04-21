@@ -14,7 +14,7 @@ public class ListaLocales
         listaLocales = new ArrayList<>();
     }
     
-    public boolean agregarLocal(Local local)
+    public boolean agregarLocal(int id, String nombre, String ciudad, String direccion, Persona encargado)
     {
         if (!listaLocales.isEmpty())
         {
@@ -22,73 +22,63 @@ public class ListaLocales
             while(iteradorL.hasNext())
             {
                 Local dato= iteradorL.next();
-                if (dato.getId()==local.getId())
+                if (dato.getId()==id)
                     return false;
             } 
         }
-        listaLocales.add(local);
+        Local nuevoLocal = new Local(id,nombre,ciudad,direccion,encargado);
+        listaLocales.add(nuevoLocal);
         return true;  
     }
     
-    public boolean modificarIdLocal(Persona encargado, Local local)
+    public boolean modificarIdLocal(Integer idNueva, Integer idLocal)
     {
-        if(listaLocales.contains(local))
+        if (existeLocal(idLocal)!=null && existeLocal(idNueva)==null)
         {
-            for(int i=0; i<listaLocales.size(); i++)
+            for(int i=0; i< listaLocales.size(); i++)
             {
-                if(listaLocales.get(i).equals(local))
+                if(listaLocales.get(i).equals(existeLocal(idLocal)))
                 {
-                    listaLocales.get(i).setEncargado(encargado);;
+                    listaLocales.get(i).setId(idNueva);;
                     return true;
                 }
             }
-        }
-        return false;
-    }
-    public boolean modificarIdLocal(Integer id, Local local)
-    {
-        if(listaLocales.contains(local))
-        {
-            for(int i=0; i<listaLocales.size(); i++)
-            {
-                if(listaLocales.get(i).equals(local))
-                {
-                    listaLocales.get(i).setId(id);;
-                    return true;
-                }
-            }
+            
         }
         return false;
     }
     
-    public boolean modificarDireccionLocal(String direccion, Local local)
+    public boolean modificarDireccionLocal(String direccion, Integer idLocal)
     {
-        if(listaLocales.contains(local))
+        if (existeLocal(idLocal)!=null)
         {
-            for(int i=0; i<listaLocales.size(); i++)
+            for(int i=0; i< listaLocales.size(); i++)
             {
-                if(listaLocales.get(i).equals(local))
+                if(listaLocales.get(i).equals(existeLocal(idLocal)))
                 {
                     listaLocales.get(i).setDireccion(direccion);;
                     return true;
                 }
             }
+            
         }
         return false;
     }
     
-    public boolean modificarEncargadoLocal(Persona encargado, Local local)
+    public boolean modificarEncargadoLocal(Persona encargado, Integer idLocal)
     {
-        if(listaLocales.contains(local))
+        
+        if (existeLocal(idLocal)!=null)
         {
-            for(int i=0; i<listaLocales.size(); i++)
+            for(int i=0; i< listaLocales.size(); i++)
             {
-                if(listaLocales.get(i).equals(local))
+                if(listaLocales.get(i).equals(existeLocal(idLocal)))
                 {
                     listaLocales.get(i).setEncargado(encargado);;
                     return true;
                 }
             }
+            
         }
         return false;
     }
@@ -106,6 +96,24 @@ public class ListaLocales
                 }
             }
         }
+
+        return false;
+    }
+    public boolean eliminarLocal(Integer id)
+    {
+        if (existeLocal(id)!=null)
+        {
+            for(int i=0; i< listaLocales.size(); i++)
+            {
+                if(listaLocales.get(i).equals(existeLocal(id)))
+                {
+                    listaLocales.remove(i);
+                    return true;
+                }
+            }
+            
+        }
+        
 
         return false;
     }
@@ -127,7 +135,7 @@ public class ListaLocales
         return locales;
     }
 	
-    public Local buscarLocal(int i)
+    public Local retornaLocal(int i)
     {
         if(!listaLocales.isEmpty())
         {

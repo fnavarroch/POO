@@ -78,7 +78,7 @@ public class Empresa
         return telefonoEmpresa;
     }
     public boolean agregarEncargado(String nombre,
-                                    Date fechNac,
+                                    java.sql.Date fechNac,
                                     String rut){
         if (encargado==null){
             encargado = new Persona(nombre,fechNac,rut);
@@ -87,11 +87,11 @@ public class Empresa
         return false;
     }
     public boolean cambiarEncargado(String nombre,
-                                    Date fechNac,
+                                    java.sql.Date fechNac,
                                     String rut){
         if (encargado!=null){
             encargado.setNombre(nombre);
-            encargado.setFechNac(fechNac);
+            encargado.setFechaNac(fechNac);
             encargado.setRut(rut);
             return true;
         }
@@ -181,8 +181,7 @@ public class Empresa
         while (rs.next())
         {   
             Persona encargado = new Persona(rs.getString(6),java.sql.Date.valueOf("2000-01-01"),rs.getString(5));
-            Local l = new Local(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),encargado);
-            locales.agregarLocal(l);
+            locales.agregarLocal(Integer.parseInt(rs.getString(1)),rs.getString(2),rs.getString(3),rs.getString(4),encargado);
         }
         conexion.cerrarConexion();
     };
@@ -453,11 +452,11 @@ public class Empresa
         Object[][] tabla= new Object[locales.cantidadLocales()][encabezados.length];
         for (int j = 0; j < locales.cantidadLocales(); j++) {
 
-            tabla[j][0]=locales.buscarLocal(j).getId();
-            tabla[j][1]=locales.buscarLocal(j).getNombre();
-            tabla[j][2]=locales.buscarLocal(j).getDireccion();
-            tabla[j][3]=locales.buscarLocal(j).getCiudad();
-            tabla[j][4]=locales.buscarLocal(j).getEncargado().getNombre();
+            tabla[j][0]=locales.retornaLocal(j).getId();
+            tabla[j][1]=locales.retornaLocal(j).getNombre();
+            tabla[j][2]=locales.retornaLocal(j).getDireccion();
+            tabla[j][3]=locales.retornaLocal(j).getCiudad();
+            tabla[j][4]=locales.retornaLocal(j).getEncargado().getNombre();
         }
         informeExcel(nombreHoja,nombreArchivo,tituloPlanilla,encabezados,tabla);        
     }
