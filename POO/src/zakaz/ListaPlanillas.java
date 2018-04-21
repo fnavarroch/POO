@@ -229,10 +229,6 @@ public class ListaPlanillas
 		}
 		return false;
 	}
-	public Planilla retornarPlanilla(int pos)
-	{
-            return planillas.get(pos);
-	}
 	public String mostrarPlanillas()
 	{
             String listado="";

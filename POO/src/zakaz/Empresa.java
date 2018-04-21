@@ -346,12 +346,12 @@ public class Empresa
             for (int i=0;i<planillas.cantidadPlanillas();i++)
             {
                 query = " INSERT INTO Planillas (fechaInicio,fechaFin,codigo,vehiculo,conductor,despacho) VALUES('"
-                        +planillas.retornarPlanilla(i).getFechaInicio()+"','"
-                        +planillas.retornarPlanilla(i).getFechaFin()+"','"
-                        +planillas.retornarPlanilla(i).getCodigo()+"','"
-                        +planillas.retornarPlanilla(i).getTransporte().getPatente()+"','"
-                        +planillas.retornarPlanilla(i).getConductor().getRut()+"','"
-                        +planillas.retornarPlanilla(i).getDespacho().getId()+"');";
+                        +planillas.mostrarPlanilla(i).getFechaInicio()+"','"
+                        +planillas.mostrarPlanilla(i).getFechaFin()+"','"
+                        +planillas.mostrarPlanilla(i).getCodigo()+"','"
+                        +planillas.mostrarPlanilla(i).getTransporte().getPatente()+"','"
+                        +planillas.mostrarPlanilla(i).getConductor().getRut()+"','"
+                        +planillas.mostrarPlanilla(i).getDespacho().getId()+"');";
                 //System.out.println(query);
                 filas+=conexion.updating(query);
             }
