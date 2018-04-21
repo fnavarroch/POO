@@ -35,7 +35,7 @@ public class Zakaz
             System.out.println("1- agregar encargado\n");
             System.out.println("2- agregar producto\n");
             System.out.println("3- agregar vehiculo\n");
-            System.out.println("4- agregar planilla\n");
+            //System.out.println("4- agregar planilla\n");
             
             System.out.println("6- cambiar encargado\n");
             
@@ -104,7 +104,7 @@ public class Zakaz
         System.out.println(empresa.locales.mostrarLocales());
         empresa.productos.mostrarProductos();
         empresa.vehiculos.mostrarVehiculos();
-        System.out.println(empresa.planillas.mostrarPlanillas());
+        //System.out.println(empresa.planillas.mostrarPlanillas());
         //Fin Menu
         empresa.informeLocales("Listado de Locales","Reporte de  Locales","Reporte de  Locales");
         empresa.informeEmpleados("Listado de Empleados","Reporte de  Empleados","Reporte de  Empleados");
