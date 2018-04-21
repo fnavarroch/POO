@@ -18,18 +18,17 @@ public class ListaVehiculo
 	
 	/* M�todos */
 	
-	public boolean agregarVehiculo(Vehiculo v)
-	{
-		if(listaVehiculos.contains(v))
-		{
-			return false;
-		}
+	public boolean agregarVehiculo(	marcaVehiculo,
+                                    	tipoVehiculo,
+                                    	modeloVehiculo,
+                                    	patenteVehiculo){
 		
-		else
-		{
-			listaVehiculos.add(v);
+		if(existeVehiculo(patenteVehiculo)==false){
+			Vehiculo nuevo= new Vehiculo(marcaVehiculo, tipoVehiculo, modeloVehiculo, patenteVehiculo);
+			listaVehiculos.add(nuevo);
 			return true;
 		}
+		return false;
 	}
 	
 	public boolean eliminarVehiculo(Vehiculo v)
