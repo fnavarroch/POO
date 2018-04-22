@@ -26,7 +26,8 @@ public class Zakaz {
                                      telefonoEmpresa);
         
         empresa.cargar();
-        
+        Interfaz menu=new Interfaz(empresa);
+        menu.setVisible(true);
         //Menu
         while (terminar == false) {
             System.out.println("Bienvenido al gestor de Planillas Zakaz\n\n");
