@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Scanner;
-
+import interfaz.Interfaz;
 public class Zakaz {
 
     public static void main(String[] args) throws SQLException, IOException, ParseException {
@@ -46,7 +46,7 @@ public class Zakaz {
             if (op == 1) {
                 System.out.println("ingrese nombre\n");
                 String nombreEncargado = entrada.nextLine();
-                System.out.println("ingrese año nacimiento (formato 2018-12-30  año-mes-dia)\n");
+                System.out.println("ingrese aÃ±o nacimiento (formato 2018-12-30  aÃ±o-mes-dia)\n");
                 String anoEncargado = entrada.nextLine();
                 System.out.println("ingrese rut\n");
                 String rutEncargado = entrada.nextLine();
