@@ -32,6 +32,22 @@ public class ListaPlanillas
 		}
 		return false;
 	}
+	public String mostrarPlanillaDatos(int codigo)
+	{
+		Planilla planilla;
+        String listado="";
+        if(!planillas.isEmpty())
+        {
+        	planilla=buscarPlanilla(codigo);
+        	listado+=("\n"+ String.valueOf(planilla.getFechaInicio())+"\t"
+                                        +planilla.getFechaFin()+"\t"
+                                        +planilla.getCodigo()+"\t"
+                                        +planilla.getConductor().getRut()+"\t"
+                                        +planilla.getDespacho().getId()+"\t"
+                                        +planilla.getTransporte().getPatente()+"\t");
+            }
+            return listado;
+     }
 	public boolean agregarPlanilla(int codigo,Date fechaInicio,Date fechaFin)
 	{
 		if(buscarPlanilla(codigo)==null)
