@@ -23,6 +23,16 @@ public class Planilla
 		setConductor(new Persona());
 		despacho=new Local(0,null,null,null,null);
 	}
+	public Planilla(int codigo,Date fechaInicio,Date fechaFin,String marca, String tipo, String modelo, String patente,String nombre, Date fechaNac, String rut,int id, String nombreLocal, String ciudad, String direccion)
+	{
+		this.codigo=codigo;
+		this.fechaInicio=fechaInicio;
+		this.fechaFin=fechaFin;
+		transporte=new Vehiculo(marca,tipo,modelo,patente);
+		encargos=new ListaEncargo();
+		conductor=new Persona(nombre,fechaNac,rut);
+		despacho=new Local(id,nombre,ciudad,direccion,null);
+	}
 	public Date getFechaInicio() {
 		return fechaInicio;
 	}
