@@ -21,6 +21,17 @@ public class ListaPlanillas
 		}
 		return null;
 	}
+	public boolean agregarPlanillaInterfaz(int codigo,Date fechaInicio,Date fechaFin,String marca, String tipo, String modelo, String patente,String nombre, Date fechaNac, String rut,int id, String nombreLocal, String ciudad, String direccion)
+	{
+		if(buscarPlanilla(codigo)==null)
+		{
+			Planilla newPlanilla=new Planilla(codigo,fechaInicio,fechaFin,marca,tipo,modelo,patente,nombre,fechaNac,rut,id,nombreLocal,ciudad,direccion);
+			planillas.add(newPlanilla);
+			if(buscarPlanilla(codigo)!=null)
+				return true;
+		}
+		return false;
+	}
 	public boolean agregarPlanilla(int codigo,Date fechaInicio,Date fechaFin)
 	{
 		if(buscarPlanilla(codigo)==null)
