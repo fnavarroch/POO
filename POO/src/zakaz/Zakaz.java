@@ -28,9 +28,33 @@ public class Zakaz {
         empresa.cargar();
         Interfaz menu=new Interfaz(empresa);
         menu.setVisible(true);
-        //Menu
+        
+        
+       
         while (terminar == false) {
             System.out.println("Bienvenido al gestor de Planillas Zakaz\n\n");
+            
+             //Menu?
+            System.out.println("Empleados");
+            empresa.empleados.mostrarEmpleados();
+            System.out.println("Locales");
+            System.out.println(empresa.locales.mostrarLocales());
+            System.out.println("Productos");
+            empresa.productos.mostrarProductos();
+            System.out.println("Vehiculos");
+            empresa.vehiculos.mostrarVehiculos();
+            System.out.println("PLanillas");
+            System.out.println(empresa.planillas.mostrarPlanillas());
+            //Fin Menu
+
+                empresa.informeLocales("Listado de Locales", "Reporte de  Locales", "Reporte de  Locales");
+                empresa.informeEmpleados("Listado de Empleados", "Reporte de  Empleados", "Reporte de  Empleados");
+                empresa.informeVehiculos("Listado de Vehiculos", "Reporte de  Vehiculos", "Reporte de  Empleados");
+                empresa.informeProductos("Listado de Productos", "Reporte de  Productos", "Reporte de  Productos");
+                empresa.informePlanillas("Listado de Planillas", "Reporte de  Planillas", "Reporte de  Planillas");
+
+            //Menu
+
             System.out.println("menu\n");
             System.out.println("1- agregar encargado\n");
             System.out.println("2- agregar producto\n");
@@ -98,18 +122,6 @@ public class Zakaz {
                     terminar = true;
              }
         }
-        //Menu?
-        empresa.empleados.mostrarEmpleados();
-        System.out.println(empresa.locales.mostrarLocales());
-        empresa.productos.mostrarProductos();
-        empresa.vehiculos.mostrarVehiculos();
-        //System.out.println(empresa.planillas.mostrarPlanillas());
-        //Fin Menu
-            empresa.informeLocales("Listado de Locales", "Reporte de  Locales", "Reporte de  Locales");
-            empresa.informeEmpleados("Listado de Empleados", "Reporte de  Empleados", "Reporte de  Empleados");
-            empresa.informeVehiculos("Listado de Vehiculos", "Reporte de  Vehiculos", "Reporte de  Empleados");
-            empresa.informeProductos("Listado de Productos", "Reporte de  Productos", "Reporte de  Productos");
-            empresa.informePlanillas("Listado de Planillas", "Reporte de  Planillas", "Reporte de  Planillas");
         
         empresa.guardar();
     }
