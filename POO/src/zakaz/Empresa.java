@@ -48,7 +48,10 @@ public class Empresa
         empleados = new ListaEmpleados();
         planillas = new ListaPlanillas();
     }
-	
+	public ListaPlanillas getPlanillas()
+	{
+		return planillas;
+	}
     public void cargar() throws SQLException, ParseException{
         cargarProductos();
         cargarVehiculos();
